@@ -11,13 +11,15 @@ function dodajZadanie() {
     let tekstZadania = poleZadania.value;
     let terminWykonania = poleTerminu.value;
 
-    if (tekstZadania.length < 3 || tekstZadania.length > 255) {
-        alert("Tekst zadania musi mieć co najmniej 3 znaki i nie więcej niż 255 znaków.");
+    let tekstBezSpacji = tekstZadania.replace(/\s/g, '');
+
+    if (tekstBezSpacji.length < 3 || tekstBezSpacji.length > 255) {
+        alert("Wpisane musi byc co najmniej 3 znaki (bez spacji) i nie więcej niż 255 znaków (bez spacji).");
         return;
     }
 
     if (terminWykonania !== "" && new Date(terminWykonania) <= new Date()) {
-        alert("Data wykonania zadania musi być pusta lub w przyszłości.");
+        alert("Data musi być musta lub 1 dzień od daty dzisiejszej.");
         return;
     }
 
@@ -28,6 +30,8 @@ function dodajZadanie() {
     poleZadania.value = "";
     poleTerminu.value = "";
 }
+
+
 
 function usunZadanie(index) {
     let zadania = JSON.parse(localStorage.getItem("zadania"));
