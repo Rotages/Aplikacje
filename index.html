@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    #map {
+        width: 80%;
+        height: 500px;
+        border: 1px solid black;
+	float: left;
+      }
+      .main {
+        display: flex;
+        flex-direction: row;
+        padding: 1rem;
+      }
+      .left {
+        flex: 1;
+      }
+      .right {
+        flex: 1;
+      }
+      .puzzle-piece {
+        display: inline-block;
+        width: calc(25% - 10px);
+        height: 75px;
+        background-color: #fff;
+        border: 1px solid #000;
+        margin: 5px;
+      }
+      .board {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        width: 800px;
+      }
+      .block {
+        background-size: cover;
+        position: relative;
+        border: 2px solid #333;
+        background-color: #ddb2b2;
+        height: 100px;
+      }
+      .block img {
+        width: 100%;
+        height: 100%;
+      }
+      .buttons {
+      clear: both;
+      margin-top: 10px;
+      }
+  </style>
+</head>
+<body>
+  <h1>Mapa</h1>
+  <div class="main">
+      <div class="left">
+          <div id="map"></div>
+      </div>
+      <div class="right">
+        <div class="board" id="board"></div>
+      </div>
+    </div>
+  <div id="puzzleContainer"></div>
+  <div class="buttons">
+    <button onclick="showMyLocation()">Moja lokalizacja</button>
+    <button onclick="generatePuzzlePieces(map)">Pobierz mapę</button>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-image@0.4.0/leaflet-image.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
